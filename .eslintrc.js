@@ -21,13 +21,4 @@ module.exports = {
     "no-console": "off",
     "lines-between-class-members": "off",
   },
-  "babel": {
-    "env": {
-      "test": {
-        "plugins": [
-          "@babel/plugin-transform-modules-commonjs"
-        ]
-      }
-    }
-  }
 };
