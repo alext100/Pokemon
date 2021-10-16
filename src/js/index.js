@@ -22,6 +22,25 @@ const removeAllCardsFromPage = () => {
   }
 }
 
+let { totalItems, currentPage = 1 } = paginate(arrayOfURLs.length);
+currentPage = 1;
+
+const showActivePageNamberInPaginationBlock = ({ currentPage }) => {
+  if (currentPage === 1) {
+    previousButton.parentElement.classList.add('disabled');
+    firstPageInPagination.parentElement.classList.add('active');
+    secondPageInPagination.parentElement.classList.remove('active');
+    firstPageInPagination.textContent = 1;
+  } else {
+    firstPageInPagination.parentElement.classList.remove('active');
+    previousButton.parentElement.classList.remove('disabled');
+    firstPageInPagination.textContent = currentPage - 1;
+    secondPageInPagination.textContent = currentPage;
+    secondPageInPagination.parentElement.classList.add('active');
+    thirdPageInPagination.textContent = currentPage + 1;
+  }
+}
+
 const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   const urlOfPokemonsToShowOnPage = arrayOfURLs.slice(startIndex, endIndex + 1);
   showActivePageNamberInPaginationBlock({ currentPage });
