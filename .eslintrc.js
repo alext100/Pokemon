@@ -10,7 +10,7 @@ module.exports = {
   parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
   rules: {
     "no-param-reassign": "off",
