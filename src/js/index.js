@@ -15,6 +15,13 @@ const offset = 0;
 const urlAPI = `https://pokeapi.co/api/v2/pokemon?limit=1200&offset=${offset}`;
 let arrayOfURLs = [];
 
+
+const removeAllCardsFromPage = () => {
+  while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+  }
+}
+
 const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   const urlOfPokemonsToShowOnPage = arrayOfURLs.slice(startIndex, endIndex + 1);
   showActivePageNamberInPaginationBlock({ currentPage });
