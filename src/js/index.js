@@ -45,3 +45,30 @@ const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   }
 })();
 
+paginationBlock.addEventListener('click', (event) => {
+  totalItems = paginate(arrayOfURLs.length).totalItems;
+  const paginationData = paginate(totalItems, currentPage);
+  if (event.target.textContent === 'Next') {
+    currentPage++
+    paginationData.currentPage = currentPage;
+    removeAllCardsFromPage();
+    showPokemonsOnPage(paginationData);
+    showActivePageNamberInPaginationBlock(paginationData);
+  }
+  if (event.target.textContent === 'Previous') {
+    if (currentPage === 1) {
+      event.target.parentElement.classList.add('disabled');
+    } else event.target.parentElement.classList.remove('disabled');
+    currentPage--;
+    paginationData.currentPage = currentPage;
+    removeAllCardsFromPage();
+    showPokemonsOnPage(paginate(totalItems, currentPage));
+    showActivePageNamberInPaginationBlock(paginationData);
+  }
+  if (event.target.textContent.match(/[0-9]$/)) {
+    paginationData.currentPage = +event.target.textContent;
+    removeAllCardsFromPage();
+    showPokemonsOnPage(paginate(totalItems, currentPage));
+    showActivePageNamberInPaginationBlock(paginationData);
+  }
+});
