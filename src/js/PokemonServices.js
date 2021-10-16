@@ -1,5 +1,7 @@
 class PokemonServices {
-  urlAPI = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
+  //urlAPI = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
+  urlAPI = "https://pokeapi.co/api/v2/pokemon/4";
+  urlHerokuAPI = "https://pokemon-api-aleksandr.herokuapp.com/pokemon";
 
   async getPokemons(urlAPI) {
     const response = await fetch(urlAPI);
@@ -8,7 +10,7 @@ class PokemonServices {
   }
 
   async createPokemon(pokemon) {
-    const response = await fetch(`${this.urlAPI}`, {
+    const response = await fetch(`${this.urlHerokuAPI}`, {
       method: "POST",
       body: JSON.stringify(pokemon),
       header: {
@@ -17,6 +19,16 @@ class PokemonServices {
     });
     const newPokemon = await response.json();
     return newPokemon;
+  }
+
+  async updatePokemon(id, pokemon) {
+    fetch(`${this.urlHerokuAPI}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(pokemon),
+      header: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
 
