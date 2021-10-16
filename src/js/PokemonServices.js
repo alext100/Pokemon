@@ -31,7 +31,15 @@ class PokemonServices {
     });
   }
 
-
+  async deletePokemon(id) {
+    const response = await fetch(`${this.urlHerokuAPI}/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      return true;
+    }
+    throw new Error("Can't delete it");
+  }
 }
 
 export default PokemonServices;
