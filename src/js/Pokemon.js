@@ -32,7 +32,7 @@ class Pokemon {
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="submit" method="get" id=${this.id} class="btn btn-sm btn-outline-secondary pokemon-card--view-button" onClick='location.href="card.html?id=${this.id}"'>View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary pokemon-card--favorites-button">Add to favorites</button>
+                  <button type="button" method="post" id=${this.id} class="btn btn-sm btn-outline-secondary pokemon-card--favorites-button" onClick='location.href="favorites.html?favorites"'>Add to favorites</button>
                 </div>
               </div>
             </div>
