@@ -5,7 +5,7 @@ const services = new PokemonServices();
 
 const parentElement = document.querySelector('.album-container');
 
-const urlHerokuAPI = "http://pokemon-api-aleksandr.herokuapp.com/pokemon";
+const urlHerokuAPI = "https://pokemon-api-aleksandr.herokuapp.com/pokemon";
 let arrayOfFavorites = [];
 
 (async () => {

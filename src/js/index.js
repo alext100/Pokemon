@@ -1,4 +1,4 @@
-import paginate from './jpaginate.js';
+import paginate from './paginate.js';
 import PokemonServices from './PokemonServices.js';
 import Pokemon from './Pokemon.js';
 
@@ -22,7 +22,7 @@ const removeAllCardsFromPage = () => {
 }
 
 let { totalItems, currentPage = 1 } = paginate(arrayOfURLs.length);
-currentPage = 1;
+currentPage = 2;
 
 const showActivePageNamberInPaginationBlock = ({ currentPage }) => {
   if (currentPage === 1) {
@@ -72,7 +72,6 @@ paginationBlock.addEventListener('click', (event) => {
     paginationData.currentPage = currentPage;
     removeAllCardsFromPage();
     showPokemonsOnPage(paginationData);
-    showActivePageNamberInPaginationBlock(paginationData);
   }
   if (event.target.textContent === 'Previous') {
     if (currentPage === 1) {
@@ -86,6 +85,7 @@ paginationBlock.addEventListener('click', (event) => {
   }
   if (event.target.textContent.match(/[0-9]$/)) {
     paginationData.currentPage = +event.target.textContent;
+    currentPage = paginationData.currentPage;
     removeAllCardsFromPage();
     showPokemonsOnPage(paginate(totalItems, currentPage));
     showActivePageNamberInPaginationBlock(paginationData);
