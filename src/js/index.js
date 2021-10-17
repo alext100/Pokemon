@@ -123,6 +123,9 @@ albumContainer.addEventListener('click', (event) => {
   if (event.target.textContent === 'Add to favorites') {
     getCardFromAPIById(event.target.id);
   }
+  if (event.target.textContent === 'Delete from favorites') {
+    deleteCardFromAPI(event.target.id);
+  }
 });
 
 export { showPokemonsOnPage, getPokemonsUrl }
