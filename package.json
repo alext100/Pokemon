@@ -30,6 +30,7 @@
     "jest": "^27.2.5"
   },
   "dependencies": {
+    "isomorphic-fetch": "^3.0.0",
     "jw-paginate": "^1.0.4"
   }
 }
