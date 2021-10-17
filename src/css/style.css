@@ -36,3 +36,6 @@ main .main-header-container {
 .pagination-container {
   justify-content: center;
 }
+.noshow {
+  display: none;
+}
