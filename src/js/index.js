@@ -111,7 +111,6 @@ const addCardToFavorites = (card) => {
   (async () => {
     try {
       const response = await services.createPokemon(card);
-      console.log(response);
     }
     catch (error) {
       console.log("error addCardToFavorites");
