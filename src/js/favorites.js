@@ -18,7 +18,7 @@ let arrayOfFavorites = [];
       const urlOfPokemon = `https://pokeapi.co/api/v2/pokemon/${pokemonId}/`;
       const response = await services.getPokemons(urlOfPokemon);
       const urlOfImage = pokemon.sprites.other.dream_world.front_default;
-      new Pokemon(parentElement, urlOfPokemon, urlOfImage, response.height, response.weight, response.name, response.id);
+      new Pokemon(parentElement, urlOfPokemon, urlOfImage, response.height, response.weight, response.name, response.id, 'View details', 'Delete from favorites');
     });
   } catch (error) {
     console.log(error);
