@@ -7,9 +7,11 @@ const services = new PokemonServices();
 const parentElement = document.querySelector('.album-container');
 const paginationBlock = document.querySelector('.pagination');
 const previousButton = document.querySelector('.pagination--previous-button');
+const nextButton = document.querySelector('.pagination--next-button');
 const firstPageInPagination = document.querySelector('.pagination--first-page');
 const secondPageInPagination = document.querySelector('.pagination--second-page');
 const thirdPageInPagination = document.querySelector('.pagination--third-page');
+const lastPageInPagination = document.querySelector('.pagination--last-page');
 const albumContainer = document.querySelector('.album-container');
 
 const offset = 0;
@@ -26,18 +28,29 @@ let { totalItems, currentPage = 1 } = paginate(arrayOfURLs.length);
 currentPage = 2;
 
 const showActivePageNamberInPaginationBlock = ({ currentPage }) => {
+  const lastPageNumber = paginate(arrayOfURLs.length).totalPages;
+  lastPageInPagination.textContent = lastPageNumber;
   if (currentPage === 1) {
     previousButton.parentElement.classList.add('disabled');
     firstPageInPagination.parentElement.classList.add('active');
     secondPageInPagination.parentElement.classList.remove('active');
+    secondPageInPagination.textContent = currentPage + 1;
     firstPageInPagination.textContent = 1;
+  } else if (currentPage === lastPageNumber) {
+    nextButton.parentElement.classList.add('disabled');
+    lastPageInPagination.parentElement.classList.add('active');
+    secondPageInPagination.parentElement.classList.remove('active');
+    firstPageInPagination.parentElement.classList.remove('active');
+    firstPageInPagination.textContent = 1;
+    secondPageInPagination.textContent = currentPage - 2;
+    thirdPageInPagination.textContent = currentPage - 1;
   } else {
     firstPageInPagination.parentElement.classList.remove('active');
     previousButton.parentElement.classList.remove('disabled');
-    firstPageInPagination.textContent = currentPage - 1;
     secondPageInPagination.textContent = currentPage;
     secondPageInPagination.parentElement.classList.add('active');
     thirdPageInPagination.textContent = currentPage + 1;
+    nextButton.parentElement.classList.remove('disabled');
   }
 }
 
@@ -111,7 +124,6 @@ const addCardToFavorites = (card) => {
   (async () => {
     try {
       const response = await services.createPokemon(card);
-      console.log(response);
     }
     catch (error) {
       console.log("error addCardToFavorites");
@@ -124,5 +136,3 @@ albumContainer.addEventListener('click', (event) => {
     getCardFromAPIById(event.target.id);
   }
 });
-
-export { showPokemonsOnPage, getPokemonsUrl, showActivePageNamberInPaginationBlock }
