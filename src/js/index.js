@@ -67,13 +67,10 @@ getPokemonsUrl();
 paginationBlock.addEventListener('click', (event) => {
   totalItems = paginate(arrayOfURLs.length).totalItems;
   const paginationData = paginate(totalItems, currentPage);
-  console.log('paginationData.currentPage: ', paginationData.currentPage);
   if (event.target.textContent === 'Next') {
     currentPage++
     paginationData.currentPage = currentPage;
-    console.log('paginationData.currentPage: ', paginationData.currentPage);
     removeAllCardsFromPage();
-    // showActivePageNamberInPaginationBlock(paginationData);
     showPokemonsOnPage(paginationData);
   }
   if (event.target.textContent === 'Previous') {
