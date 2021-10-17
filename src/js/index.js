@@ -10,7 +10,6 @@ const previousButton = document.querySelector('.pagination--previous-button');
 const firstPageInPagination = document.querySelector('.pagination--first-page');
 const secondPageInPagination = document.querySelector('.pagination--second-page');
 const thirdPageInPagination = document.querySelector('.pagination--third-page');
-const albumContainer = document.querySelector('.album-container');
 
 const offset = 0;
 const urlAPI = `https://pokeapi.co/api/v2/pokemon?limit=1200&offset=${offset}`;
@@ -48,12 +47,12 @@ const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   urlOfPokemonsToShowOnPage.forEach(async (urlPokemon) => {
     const response = await services.getPokemons(urlPokemon);
     const urlOfImage = response.sprites.other.dream_world.front_default;
-    new Pokemon(parentElement, urlPokemon, urlOfImage, response.height, response.weight, response.name);
+    new Pokemon(parentElement, urlPokemon, urlOfImage, response.height, response.weight, response.name, response.id);
   });
 }
 
 
-(async () => {
+const getPokemonsUrl = async () => {
   try {
     const response = await services.getPokemons(urlAPI);
     arrayOfURLs = response.results;
@@ -64,7 +63,8 @@ const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   } catch (error) {
     console.log(error);
   }
-})();
+}
+getPokemonsUrl();
 
 paginationBlock.addEventListener('click', (event) => {
   totalItems = paginate(arrayOfURLs.length).totalItems;
@@ -93,12 +93,3 @@ paginationBlock.addEventListener('click', (event) => {
     showActivePageNamberInPaginationBlock(paginationData);
   }
 });
-
-albumContainer.addEventListener('click', (event) => {
-  if (event.target.classList.contains('pokemon-card--view-button')) {
-    showPageWithPokemonCard();
-  }
-  if (event.target.classList.contains('pokemon-card--favorites-button')) {
-    addToFavoritesList();
-  }
-})
