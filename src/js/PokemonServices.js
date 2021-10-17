@@ -1,6 +1,4 @@
 class PokemonServices {
-  //  urlAPI = "https://pokeapi.co/api/v2/pokemon?limit=9&offset=0";
-  //  urlAPI = "https://pokeapi.co/api/v2/pokemon/4";
   urlHerokuAPI = "https://pokemon-api-aleksandr.herokuapp.com/pokemon";
   // urlHerokuAPI = 'http://localhost:4000/pokemon';
 

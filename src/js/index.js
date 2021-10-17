@@ -125,4 +125,4 @@ albumContainer.addEventListener('click', (event) => {
   }
 });
 
-export { showPokemonsOnPage, getPokemonsUrl }
+export { showPokemonsOnPage, getPokemonsUrl, showActivePageNamberInPaginationBlock }
