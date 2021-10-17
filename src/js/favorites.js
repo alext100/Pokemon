@@ -11,7 +11,7 @@ const urlHerokuAPI = "https://pokemon-api-aleksandr.herokuapp.com/pokemon";
 navigation.classList.add('noshow');
 let arrayOfFavorites = [];
 
-(async () => {
+const showFavorites = async () => {
   try {
     const response = await services.getPokemons(urlHerokuAPI);
     arrayOfFavorites = response;
@@ -25,23 +25,31 @@ let arrayOfFavorites = [];
   } catch (error) {
     console.log(error);
   }
-})();
+}
+showFavorites();
 
 const deleteCardFromAPI = (id) => {
   (async () => {
     try {
-      const response = await services.deletePokemon(id);
-      console.log(response);
+      await services.deletePokemon(id);
     }
     catch (error) {
       console.log("error deleteCardFromAPI");
     }
   })();
 }
+
+const removeAllCardsFromPage = () => {
+  while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+  }
+}
+
 albumContainer.addEventListener('click', (event) => {
   if (event.target.textContent === 'Delete from favorites') {
-    console.log('delete!')
     deleteCardFromAPI(event.target.id);
+    removeAllCardsFromPage();
+    showFavorites();
   }
 });
 
