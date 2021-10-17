@@ -39,3 +39,8 @@ main .main-header-container {
 .noshow {
   display: none;
 }
+.logo {
+  width: 120px;
+  margin: 0 50px 0 20px;
+  padding: 0;
+}
