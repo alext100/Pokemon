@@ -19,4 +19,4 @@ const showPageWithPokemonCard = () => {
     }
   })();
 }
-showPageWithPokemonCard()
+showPageWithPokemonCard();

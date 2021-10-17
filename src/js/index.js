@@ -10,6 +10,7 @@ const previousButton = document.querySelector('.pagination--previous-button');
 const firstPageInPagination = document.querySelector('.pagination--first-page');
 const secondPageInPagination = document.querySelector('.pagination--second-page');
 const thirdPageInPagination = document.querySelector('.pagination--third-page');
+const albumContainer = document.querySelector('.album-container');
 
 const offset = 0;
 const urlAPI = `https://pokeapi.co/api/v2/pokemon?limit=1200&offset=${offset}`;
@@ -89,6 +90,38 @@ paginationBlock.addEventListener('click', (event) => {
     removeAllCardsFromPage();
     showPokemonsOnPage(paginate(totalItems, currentPage));
     showActivePageNamberInPaginationBlock(paginationData);
+  }
+});
+
+const getCardFromAPIById = (id) => {
+  (async () => {
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+      const responsePokemonCard = await services.getPokemons(url);
+      addCardToFavorites(responsePokemonCard);
+      return responsePokemonCard;
+    }
+    catch (error) {
+      console.log("error getCardFromAPIById");
+    }
+  })();
+}
+
+const addCardToFavorites = (card) => {
+  (async () => {
+    try {
+      const response = await services.createPokemon(card);
+      console.log(response);
+    }
+    catch (error) {
+      console.log("error addCardToFavorites");
+    }
+  })();
+}
+
+albumContainer.addEventListener('click', (event) => {
+  if (event.target.textContent === 'Add to favorites') {
+    getCardFromAPIById(event.target.id);
   }
 });
 
