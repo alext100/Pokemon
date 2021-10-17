@@ -10,6 +10,7 @@ const previousButton = document.querySelector('.pagination--previous-button');
 const firstPageInPagination = document.querySelector('.pagination--first-page');
 const secondPageInPagination = document.querySelector('.pagination--second-page');
 const thirdPageInPagination = document.querySelector('.pagination--third-page');
+const albumContainer = document.querySelector('.album-container');
 
 const offset = 0;
 const urlAPI = `https://pokeapi.co/api/v2/pokemon?limit=1200&offset=${offset}`;
@@ -51,6 +52,7 @@ const showPokemonsOnPage = ({ currentPage, startIndex, endIndex }) => {
   });
 }
 
+
 (async () => {
   try {
     const response = await services.getPokemons(urlAPI);
@@ -91,3 +93,12 @@ paginationBlock.addEventListener('click', (event) => {
     showActivePageNamberInPaginationBlock(paginationData);
   }
 });
+
+albumContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pokemon-card--view-button')) {
+    showPageWithPokemonCard();
+  }
+  if (event.target.classList.contains('pokemon-card--favorites-button')) {
+    addToFavoritesList();
+  }
+})
