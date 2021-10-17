@@ -12,56 +12,39 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-    <script src="./js/index.js" type="module"></script>
+    <script src="./js/favorites.js" type="module"></script>
     <title>Pokemon</title>
   </head>
   <body>
     <main>
-     <header class="p-3 mb-3 border-bottom">
-      <div class="container">
-       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <header class="p-3 mb-3 border-bottom">
+         <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+              <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="./index.html" class="nav-link px-2 link-dark">All pokémons</a></li>
+                 <li><a href="./favorites.html" class="nav-link px-2 link-dark">My pokémons</a></li>
+               </ul>
+          
+              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+              </form>
+            </div>
+        </div>
+    </header>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="./index.html" class="nav-link px-2 link-dark">All pokémons</a></li>
-          <li><a href="./favorites.html" class="nav-link px-2 link-dark">My pokémons</a></li>
-        </ul>
+     <div class="px-4 my-5 text-center main-header-container">
+       <h1 class="display-5 fw-bold">My pokemons</h1>
+     </div>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-      </div>
-    </div>
-  </header>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 album-container">
 
- <div class="px-4 my-5 text-center main-header-container">
-  <h1 class="display-5 fw-bold">My pokemons</h1>
-</div>
+              
+            </div>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 album-container"></div>
-    </div>
-  </div>
-
-  <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link pagination--previous-button">Previous</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link pagination--first-page" href="#">1</a>
-    </li>
-    <li class="page-item" aria-current="page">
-      <a class="page-link pagination--second-page" href="#">2</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link pagination--third-page" href="#">3</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link pagination--next-button" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+              </div>
+            </div>
           </div>
         </div>
     </main>
